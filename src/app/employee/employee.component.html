@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold mb-4">Employee List</h1>
+        <table class="min-w-full bg-white rounded-lg overflow-hidden">
+            <thead class="bg-gray-200 text-gray-700">
+                <tr>
+                    <th class="py-2 px-4">ID</th>
+                    <th class="py-2 px-4">Name</th>
+                    <th class="py-2 px-4">Email</th>
+                    <th class="py-2 px-4">Department</th>
+                    <th class="py-2 px-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-center">
+                <tr *ngFor="let emp of employees">
+                    <td class="py-2 px-4">{{emp.id}}</td>
+                    <td class="py-2 px-4 text-blue-500"><a class="hover:underline" routerLink="/employee/{{emp.id}}">{{emp.name}}</a></td>
+                    <td class="py-2 px-4">{{emp.email}}</td>
+                    <td class="py-2 px-4">{{emp.department}}</td>
+                    <td class="py-2 px-4">
+                        <button class="bg-blue-500 text-white px-3 py-1 rounded-lg" (click)="editEmployee(emp);">Edit</button>
+                        <button class="bg-red-500 text-white px-3 py-1 rounded-lg ml-2" (click)="deleteEmployee(emp)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="bg-blue-500 text-white px-3 py-1 rounded-lg" (click)="refrshEmpList();">Refresh</button>
+    </div>
+</body>
+</html>
